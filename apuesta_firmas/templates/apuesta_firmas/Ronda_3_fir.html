@@ -1,0 +1,230 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    <div class="div_text">
+  Dupla 3
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="div_text">
+  {{ text }}
+</div>
+
+
+<div class="div_tabWorkers">
+        <div class="div_tabWorker" id="div_tabWorker_1" onclick="selectworker(this)">
+            <table class="tabWorker">
+
+
+                <tr>
+                  <td class="td_info">
+                      <b>Tipo de documento</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_1.tipo_doc }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info" style="width:40%;">
+                      <b>Número de documento</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_1.num_doc }}
+                  </td>
+               </tr>
+
+
+                <tr>
+                  <td class="td_info">
+                      <b>Lugar de nacimiento</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_1.lug_nac }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Edad</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_1.age }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Experiencia laboral</b>
+                  </td>
+                  <td class="td_info">
+                      <ul>
+                      {% for opcion in worker_1.las_exp %}
+                            <li>{{ opcion }}</li>
+                      {% endfor %}
+                      </ul>
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Nivel educativo</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_1.lvl_edu }}
+                  </td>
+               </tr>
+            </table>
+            <div class="div_radButton">
+            <input type="radio" value="{{ worker_1.type }}" id="rad_candidato_1" name="selected_round_{{ round }}">
+            <label for="rad_candidato_1">Candidato A</label>
+            </div>
+    </div>
+
+        <div class="div_tabWorker" id="div_tabWorker_2" onclick="selectworker(this)">
+            <table class="tabWorker">
+
+
+                <tr>
+                  <td class="td_info">
+                      <b>Tipo de documento</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_2.tipo_doc }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info" style="width:40%;">
+                      <b>Número de documento:</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_2.num_doc }}
+                  </td>
+               </tr>
+
+
+                <tr>
+                  <td class="td_info">
+                      <b>Lugar de nacimiento</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_2.lug_nac }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Edad</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_2.age }}
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Experiencia laboral</b>
+                  </td>
+                  <td class="td_info">
+                      <ul>
+                      {% for opcion in worker_2.las_exp %}
+                            <li>{{ opcion }}</li>
+                      {% endfor %}
+                      </ul>
+                  </td>
+               </tr>
+
+                <tr>
+                  <td class="td_info">
+                      <b>Nivel educativo</b>
+                  </td>
+                  <td class="td_info">
+                      {{ worker_2.lvl_edu }}
+                  </td>
+               </tr>
+            </table>
+            <div class="div_radButton">
+            <input type="radio" value="{{ worker_2.type }}" id="rad_candidato_2" name="selected_round_{{ round }}" required>
+
+            <label for="rad_candidato_2">Candidato B
+            </label>
+            </div>
+    </div>
+
+</div>
+
+
+<div class="div_slider">
+De los <b>50</b> tokens que tiene a su disposición ¿Cuántos apostaría por el candidato escogido?
+ <br>
+ <!--   Esto es para armar un slider
+    <b id="n_tokens">--</b><b>tokens</b>
+ <br>
+  <input type="range" min="0" max="100" step="1" id="slider_tokens" class="slider_tokens"  name="tokens_round_{{round}}"required>
+-->
+    <table class="tab_tokens">
+        <tr>
+            <td>
+                <input type="text" class="in_tokens" id="in_tokens" name="tokens_round_{{round}}" oninput="validateInput(event)" required maxlength="2" max="50">
+
+            </td>
+            <td>
+                Tokens
+            </td>
+            <span id="error_max_msg" style="color: red; display: none;"><b>Máximo 50 tokens</b></span>
+        </tr>
+
+<script>
+    function validateInput(event) {
+       		// Deshabilitamos los mensajes de error previos
+		document.getElementById("error_min").style.display = "none";
+		document.getElementById("error_max").style.display = "none";
+		document.getElementById("in_tokens").classList.remove("in_tokens-error");
+		// Obtener el valor del input
+		let in_value = event.target.value;
+		// Vaidar que ingrese un número
+		if(!/^\d*$/.test(in_value)) {
+			// Si no ingresa un número se retrocede en un caracter el valor ingresado
+        	event.target.value = in_value.slice(0, -1);
+        } else {
+        	// Si sí ingresó un número ahora validamos que esté entre 0 y 100
+        	if(in_value > 50) {
+        		event.target.value = 50;
+        		document.getElementById("error_max_msg").style.display = "block";
+        		document.getElementById("in_tokens").classList.add("in_tokens-error");
+        	} else if (in_value < 0) {
+        		event.target.value = 0;
+        		document.getElementById("error_min").style.display = "block";
+        		document.getElementById("in_tokens").classList.add("in_tokens-error");
+        	}
+        }
+        // Para que aparezca el botón de siguiente
+		tokens_selected = 1;
+		if((hv_selected + tokens_selected) == 2) {
+			document.getElementById("div_btnNext").style.display = "block";
+		}
+	}
+</script>
+
+
+    </table>
+    <div class="msg_error">
+        <div style="display: none;" id="error_min">
+            El valor mínimo de los tokens es de 0
+        </div>
+
+        <div style="display: none;" id="error_max">
+            El valor máximo de los tokens es de 100
+        </div>
+    </div>
+</div>
+
+<div class="div_btnNext" id="div_btnNext" style="display: none;">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+
+{% endblock %}

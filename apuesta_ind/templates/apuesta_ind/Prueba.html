@@ -1,0 +1,131 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    <div class="div_text">
+        Dupla de entrenamiento
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="image-container" style="text-align: center;">
+    <b>Esta imagen representa un ejemplo</b> de las duplas que encontrará a lo largo del ejercicio y frente a las cuales usted debe tomar decisiones.
+</div>
+
+<br>
+
+<div class="image-container" style="text-align: center;">
+    <img src="{% static 'prueba.png' %}" width="80%" height="60%">
+</div>
+
+<br>
+
+<p align="justify">Supongamos que de los 100 tokens que tiene a disposición usted va a apostar 50 tokens al candidato que <b>considere</b> tuvo mejor desempeño, como puede ver en el recuadro inferior de las duplas.</p>
+<p align="justify">Recuerde que, de acuerdo a las instrucciones que acaba de leer, <b>usted dispone de 100 tokens al inicio de cada dupla y puede apostar la cantidad que desee</b>. Si usted apuesta 1 token al candidato mejor posicionado en el ranking de desempeño, usted obtiene 1 token de ganancia, pero si la apuesta la hace al candidato peor posicionado, tendrá como resultado una pérdida de -1 token. <b>Tenga presente que las ganancias y las pérdidas son acumulables.</b> </p>
+<p align="justify"><b>Supongamos en el ejemplo de la imagen que quien estuvo realmente mejor posicionado en el ranking de desempeño fue el candidato B</b>. Frente a esta situación, responda correctamente lo que sucedería con la apuesta de los 50 tokens <b>en cada uno de los dos casos que se le presentan a continuación.</b></p>
+<p align="justify">Para confirmar que ha respondido correctamente cada caso, dé click en el botón "Verificar". Si le aparece un mensaje de error, por favor, corrija e intente de nuevo con la respuesta correcta.</p>
+
+<br>
+
+<p>Si usted apostó 50 tokens al candidato B, debería obtener
+    <input type="number" id="gananciaInput" style="max-width: 70px;width: 100%;
+        padding: 0.375rem 0.75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;
+        background-clip: padding-box;border: 1px solid #ced4da;border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;text-align: center;
+        margin-right: 10px;" required />tokens
+    <input type="hidden" name="mistakes" id="mistakes" value="0">
+
+    <button id="paymentButton" type="button" onclick="verificarGanancia()" style="background-color: #0069d9;
+        border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;"
+        onmousedown="changeButtonBorder('paymentButton', '2px solid #00509e')"
+        onmouseup="changeButtonBorder('paymentButton', 'none')">Verificar</button>
+
+    <span id="mensaje" style="display: inline-block; margin-left: 10px;"></span>
+</p>
+
+<br>
+
+<form id="form" onsubmit="return false;">
+    <p>Si usted apostó 50 tokens al candidato A, debería obtener
+        <input type="number" id="perdidaInput" style="max-width: 70px;width: 100%;
+            padding: 0.375rem 0.75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;
+            background-clip: padding-box;border: 1px solid #ced4da;border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;text-align: center;
+            margin-right: 10px;" required/>tokens
+        <input type="hidden" name="mistakes" id="mistakes" value="0">
+
+        <button type="button" onclick="verificarPerdida()" style="background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;"
+            onmousedown="changeButtonBorder('paymentButton', '2px solid #00509e')"
+            onmouseup="changeButtonBorder('paymentButton', 'none')">Verificar</button>
+
+        <span id="per_mensaje" style="display: inline-block; margin-left: 10px;"></span>
+    </p>
+</form>
+
+<script>
+    var situacionUnoCorrecta = false;
+    var situacionDosCorrecta = false;
+
+    function verificarGanancia() {
+        var ganancia = parseInt(document.getElementById("gananciaInput").value);
+        if (ganancia === 50) {
+            situacionUnoCorrecta = true;
+            document.getElementById("mensaje").textContent = "¡Correcto! Usted ganaría lo apostado, en este caso, 50 tokens";
+            document.getElementById("mensaje").style.color = "green";
+            document.getElementById("form").onsubmit = function() { return true; };
+        } else {
+            situacionUnoCorrecta = false;
+            var mistakes = parseInt(document.getElementById("mistakes").value);
+            mistakes++;
+            document.getElementById("mistakes").value = mistakes;
+            document.getElementById("mensaje").textContent = "Error. Recuerde que si elige apostar 1 token al candidato con mejor desempeño (B), obtendría 1 token de ganancia. Intente de nuevo";
+            document.getElementById("mensaje").style.color = "red";
+            document.getElementById("form").onsubmit = function() { return false; };
+        }
+    }
+
+    function verificarPerdida() {
+        var perdida = parseInt(document.getElementById("perdidaInput").value);
+        if (perdida === -50) {
+            situacionDosCorrecta = true;
+            document.getElementById("per_mensaje").textContent = "¡Correcto! Usted perdería lo apostado, en este caso, -50 tokens";
+            document.getElementById("per_mensaje").style.color = "green";
+            document.getElementById("form").onsubmit = function() { return true; };
+        } else {
+            situacionDosCorrecta = false;
+            var mistakes = parseInt(document.getElementById("mistakes").value);
+            mistakes++;
+            document.getElementById("mistakes").value = mistakes;
+            document.getElementById("per_mensaje").textContent = "Error. Recuerde que si elige apostar 1 token al candidato con peor desempeño (A), tendría una pérdida de -1 token. Intente de nuevo";
+            document.getElementById("per_mensaje").style.color = "red";
+            document.getElementById("form").onsubmit = function() { return false; };
+        }
+
+        verificarAmbasSituaciones();
+    }
+
+    function verificarAmbasSituaciones() {
+        if (situacionUnoCorrecta && situacionDosCorrecta) {
+            // Ambas situaciones son correctas, mostrar mensaje y habilitar botón de siguiente
+            document.getElementById("mensaje_final").textContent = "Usted ha respondido ambas situaciones de manera correcta, ahora puede pasar al ejercicio. Dé click en el botón Siguiente ";
+            document.getElementById("mensaje_final").style.color = "green";
+
+            // Habilitar el botón "Siguiente" y cambiar su color de fondo a un tono más oscuro
+            document.getElementById("siguienteButton").disabled = false;
+            document.getElementById("siguienteButton").style.backgroundColor = "#0069d9";
+        } else {
+            // Al menos una situación es incorrecta, mostrar mensaje de error
+            document.getElementById("mensaje_final").textContent = "Por favor, resuelva ambas situaciones correctamente antes de pasar al ejercicio";
+            document.getElementById("mensaje_final").style.color = "red";
+
+            // Deshabilitar el botón "Siguiente" y cambiar su color de fondo a un tono más claro
+            document.getElementById("siguienteButton").disabled = true;
+            document.getElementById("siguienteButton").style.backgroundColor = "#aed4f4";
+        }
+    }
+</script>
+
+<div id="mensaje_final" style="text-align: center;"></div>
+
+<button id="siguienteButton" style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #aed4f4; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;" disabled>Siguiente</button>
+
+{% endblock %}

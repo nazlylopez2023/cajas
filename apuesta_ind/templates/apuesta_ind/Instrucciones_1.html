@@ -1,0 +1,33 @@
+{{ block title }}
+<div style="text-align: center;">
+    <span style="color:blue;">Segunda parte de la actividad</span>
+<br>
+    <span style="color:blue;">Primera etapa</span>
+<br>
+    <span style="color:blue;">Instrucciones generales</span>
+</div>
+{{ endblock }}
+{{ block content }}
+
+<p align="justify">Por favor, lea detenidamente las siguientes instrucciones, de modo que pueda comprender adecuadamente cómo se acumularán sus ganancias. </p>
+
+<p align="justify"> Hace unas semanas se realizaron sesiones en este mismo laboratorio con 80 hombres, entre 21 y 45 años de edad. En esas sesiones, los participantes realizaron la misma tarea que usted acaba de realizar y otras tareas diferentes. Todas ellas sirven para estimar la velocidad de procesamiento del individuo. Los estudios sobre desempeño laboral han mostrado que esas tareas son buenas predictoras de la productividad. Se prevé que los participantes que obtuvieron un mejor desempeño en esas sesiones son más productivos laboralmente.</p>
+<p align="justify"> Posteriormente, los individuos fueron ordenados en un ranking usando los resultados que obtuvieron. Así, quienes alcanzaron una mejor posición en el ranking son las personas que tuvieron un mejor desempeño en la ejecución de las tareas. Los de peor desempeño obtuvieron menores puntajes y quedaron ubicados en los últimos lugares de ese mismo ranking. Al finalizar el ejercicio, los participantes diligenciaron un formato de hoja de vida con su experiencia laboral y académica.</p>
+<p align="justify"> En esta etapa, usted tomará <span style="color:blue;"><b>el rol de un reclutador laboral</b></span>. En esta pantalla aparecerán las hojas de vida de dos candidatos que se presentan para un puesto de trabajo vacante. A este par de hojas de vida les llamaremos <span style="color:blue;"><b>duplas</b></span>. Su tarea será <span style="color:blue;"><b>predecir el candidato de la dupla que ocupó una mejor posición en el ranking de desempeño de la tarea de codificación y, por tanto, se espera de él un mejor desempeño laboral.</b></span> Para ello usted tiene la siguiente información:</p>
+<p align="justify"> <li> Dado que usted acaba de ejecutar la tarea de codificación de palabras, se encuentra familiarizado con su nivel de exigencia. A esta tarea la tratamos como predictora de la productividad laboral de los candidatos. </li></p>
+<p align="justify"> <li> La hoja de vida de cada candidato.</li></p>
+<p align="justify"> Este ejercicio de predicción lo deberá hacer con ocho (8) duplas. Es decir, usted al final habrá evaluado dieciséis (16) hojas de vida y escogido ocho (8) candidatos, uno de cada dupla. <span style="color:blue;"><b>Al inicio de cada dupla usted contará con 100 tokens</b></span> que puede disponer para apostar por el candidato que considere está mejor posicionado en el ranking de desempeño.</p>
+<p align="justify">A continuación le indicaremos cómo son procesadas las pérdidas y ganancias de sus apuestas. Por favor dé click en "Siguiente".</p>
+
+    <em>{{ formfields }}</em>
+
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Siguiente</button>
+
+        </div>
+    </div>
+</div>
+
+{{ endblock }}

@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+<div style="text-align: center;">
+    Resultados de esta etapa
+</div>
+{% endblock %}
+
+{% block content %}
+     <div style="text-align: center;">
+    <p>Usted codificó {{ player.performance }} palabras. Por completar la tarea usted ha obtenido {{ payout }} tokens. </p>
+    <p>Ahora dé click en "Siguiente" para ir a la segunda parte de esta actividad.</p>
+       </div>
+
+
+
+<button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Siguiente</button>
+
+
+
+{% endblock %}

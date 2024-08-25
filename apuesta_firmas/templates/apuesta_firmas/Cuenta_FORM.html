@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    ¡Muchas gracias por participar!
+{% endblock %}
+
+{% block content %}
+
+	{% if pago_monetario >= 100000 %}
+<p>Su pago es mayor a $100.000 pesos (${{ pago_monetario }} pesos). Por asuntos relacionados con la administración financiera del estudio, su pago será dividido en dos partes iguales. La primera mitad será pagada en efectivo junto con el subsidio de transporte y la segunda mitad será depositada a su cuenta bancaria vía transferencia.</p>
+<p>Ahora se dirigirá al formulario de pagos. Por favor <b>copie y pegue este código de participante en el mismo para registrar sus datos: <span style="color:red;">{{lab_id}}</span>.</b> Allí ingresará información de su cuenta bancaria. Recuerde que los datos deben coincidir con los registrados en su entidad bancaria </p>
+<p>Haga click en el siguiente botón.</p>
+<div class="div_text">  <button type="button" onclick="NewTab()" onclick="buttonClicked()" style="background-color: #007bff; border-color: #80bdff; color: white; border-radius: 10px; border: none; padding: 10px 20px;">Formulario de pagos</button>    </div>
+  <!-- <p>Abra este link en otra ventana para acceder al fomulario https://forms.gle/BaqWMkocrqGoiX2w8 </p> -->
+
+<script>
+    function NewTab() {
+         window.open('https://forms.gle/BaqWMkocrqGoiX2w8', "_blank");
+     }
+</script>
+
+       
+
+
+	{% else %}
+ <p>Recuerde que su ganancia fue de ${{ pago_monetario }} pesos</p>
+<p>Ahora se dirigirá al formulario de pagos. Por favor <b>copie y pegue este código de participante en el mismo para registrar sus datos: <span style="color:red;">{{lab_id}}</span></b></p>
+<p>Allí ingresará información de su cuenta bancaria. Recuerde que los datos deben coincidir con los registrados en su entidad bancaria. </p>
+<p>Haga click en el siguiente botón.</p>
+<div class="div_text">  <button id="paymentButton" type="button" onclick="NewTab()" onclick="buttonClicked()"
+        style="background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 10px 20px;"
+        onmousedown="changeButtonBorder('paymentButton', '2px solid #00509e')"
+        onmouseup="changeButtonBorder('paymentButton', 'none')">Formulario de pagos</button>
+    </div>
+  <!-- <p>Abra este link en otra ventana para acceder al fomulario https://forms.gle/BaqWMkocrqGoiX2w8 </p> -->
+
+<script>
+    function NewTab() {
+         window.open('https://forms.gle/BaqWMkocrqGoiX2w8', "_blank");
+     }
+</script>
+   
+
+	{% endif %}
+
+
+
+ 
+
+
+
+{% endblock %}

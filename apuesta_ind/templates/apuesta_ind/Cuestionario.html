@@ -1,0 +1,499 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+Cuestionario.
+{% endblock %}
+{% block styles %}
+    <style>
+        .form-group {
+            margin-bottom: 1rem !important;
+            margin-top: 1rem !important;
+        }
+        .wrap {
+            display: flex;
+
+        }
+        .inner2 {
+            align-self: center;
+            font-size: 12.6px;
+        }
+        .inner {
+            align-self: center;
+            font-size: 14px;
+        }
+
+        p {
+            margin-top: 1rem !important;
+        }
+            .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+
+        .result{font-size:0.850em;line-height:0.1em;margin:-0px 0 20px 20px}
+        .result2{font-size:0.850em;line-height:0.1em;margin:-0px 0 -10px 20px}
+        .result3{font-size:1.500em;line-height:0.2em;margin:-0px 0 -10px 20px}
+        .result4{font-size:1.100em;line-height:0.5em;margin:-0px 0 -10px 40px}
+        .result5{font-size:1.000em;line-height:0.5em;margin:-20px 0 -10px 400px}
+        .result6{font-size:1.000em;line-height:0.5em;margin:-10px 0 -10px 300px}
+    </style>
+
+{% endblock %}
+
+{% block content %}
+<p class="inner" align="justify"> Por favor responda las siguientes preguntas.</p>
+
+
+<div class="d-flex align-items-start wrap">
+        <p class="inner" align="Left"> <b>1)</b> Edad:   </p>
+        <div class="in_Survey" style="margin-right: 5px;">
+        {{ formfield player.age label="" }}
+        </div>
+</div>
+{{ formfield_errors 'age' }}
+
+<!-- Gender -->
+<div class="inner" style="display: flex; ">
+    <p class="inner" align="left">
+     <b>2)</b> Género: </p>
+   <div style="display: flex; align-items: center;">
+        {% for choice in form.gender %}
+        <div style="display: flex; flex-direction: row; align-items: center; margin: 10px;">
+            <label for="{{ choice.id }}" style="margin-right: 5px;">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Education level -->
+
+<div class="inner" style="display: flex;">
+    <p class="inner" align="left">
+        <b>3)</b> Último nivel educativo alcanzado:
+    </p>
+    <div style="display: flex; align-items: center;">
+        {% for choice in form.edu_lvl %}
+        <div style="display: flex; flex-direction: row; align-items: center; margin: 10px;">
+            <label for="{{ choice.id }}" style="margin-right: 5px;">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{{ formfield_errors 'edu_lvl' }}
+
+<!-- Risk -->
+<br>
+
+<div class="inner" style="display: flex; flex-direction: column;">
+    <p class="inner" align="left">
+        <b>4)</b> Cómo se define a usted mismo ¿Es generalmente una persona muy dispuesta a correr riesgos o no dispuesta a correr riesgos? Marque una opción de 1 a 10 entre <b>No dispuesto</b> a correr el riesgo y <b>Muy dispuesto</b> a correrlo.</p>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R1 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{choice}}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{{ formfield_errors 'R1' }}
+<br>
+
+<div class="inner">
+    <b>5)</b> Una persona se puede comportar de formas diferentes en distintas circunstancias ¿Cómo calificaría su disposición a correr riesgos en las siguientes áreas? Marque una opción de 1 a 10 entre <b>No dispuesto</b> a correr el riesgo y <b>Muy dispuesto</b> a correrlo.</div>
+
+<!-- R2 -->
+
+<div class="inner" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+    <p class="inner" align="left" style="margin-right: 10px;">
+        Conduciendo un automovil </p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R2 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+<br>
+{{ formfield_errors 'R2' }}
+
+
+
+<!-- R3 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        En inversiones financieras</p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R3 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+    {{ formfield_errors 'R3' }}
+<br>
+<!-- R4 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        En el tiempo libre y en el deporte</p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R4 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+    {{ formfield_errors 'R4' }}
+<br>
+<!-- R5 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        En su carrera profesional </p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R5 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+    {{ formfield_errors 'R5' }}
+<br>
+<!-- R6 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        En su salud </p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R6 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+    {{ formfield_errors 'R6' }}
+<br>
+<!-- R7 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        En la confianza con personas extrañas </p>
+   <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="text-align: center;">No dispuesto</div>
+        {% for choice in form.R7 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">Muy dispuesto</div>
+    </div>
+</div>
+    {{ formfield_errors 'R7' }}
+<br>
+
+<!-- LATINOBARÓMETR0 -->
+ <!-- M1 -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+                    
+    <p class="inner" style="text-align: left;" >
+
+        <b>6)</b> ¿Ha pensado en la posibilidad concreta de vivir en otro país? (Marque una sola)</p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M1 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M1' }}
+
+<div class="inner">
+    <b>7)</b> Para cada una de las siguientes afirmaciones sobre los inmigrantes (las personas
+    que vienen de otros países a vivir a Colombia), dé su opinión:
+    <br>
+    Lo encuentra <b>Muy Positivo (MP), algo positivo (AP), algo negativo (AN), muy negativo (MN).</b></div>
+
+
+
+<!-- M2a -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        Recibir inmmigrantes de fuera de América Latina </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M2a %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M2a' }}
+
+
+<!-- M2b -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        Recibir inmmigrantes de América Latina </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M2b %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M2b' }}
+
+<!-- M2c -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        Recibir inmmigrantes de Haití </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M2c %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M2c' }}
+
+
+<!-- M2d -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+        Recibir inmmigrantes de Venezuela </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M2d %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M2d' }}
+<br>
+
+<!-- M3 -->
+
+<div class="inner" style="display: flex;">
+    <p class="inner" style="text-align: left;">
+        <b>8)</b> Desde su punto de vista ¿Cree usted que la llegada de inmigrantes al país, lo beneficia o lo perjudica?
+    </p>    </div>
+    <div class="inner" style="display: flex; justify-content: flex-start; align-items: center;">
+        {% for choice in form.M3 %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+
+{{ formfield_errors 'M3' }}
+<br>
+
+
+
+<div class="inner"><b>9)</b> En las siguientes frases, indique si usted está: Muy de Acuerdo<b>(MA)</b>, de Acuerdo <b>(A)</b>, en Desacuerdo <b>(D)</b>, Muy en Desacuerdo <b>(MD)</b></div>
+
+<!-- M4a -->
+
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+       Los migrantes son buenos para la economía del país </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4a %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    {{ formfield_errors 'M4a' }}
+
+<!-- M4b -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+       Los inmigrantes vienen a competir por nuestros puestos de trabajo </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4b %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4b' }}
+
+<!-- M4c -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+       Los inmigrantes causan un aumento del crimen </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4c %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4c' }}
+
+<!-- M4d -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+     Los inmigrantes mejoran nuestra sociedad con ideas y cultura </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4d %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4d' }}
+
+<!-- M4e -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+     Los inmigrantes son una carga para el Estado </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4e %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4e' }}
+
+<!-- M4f -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+     Los inmigrantes le dan al país más de lo que reciben </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4f %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4f' }}
+
+<!-- M4g -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+     Nuestro país debería ayudar a los inmigrantes que sufren persecución política en sus países </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4g %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4g' }}
+
+<!-- M4h -->
+<div class="inner" style="display: flex; justify-content: space-between;">
+    <p class="inner" align="left">
+     Los inmigrantes deberían tener el mismo acceso a la salud, educación y vivienda que los ciudadanos colombianos </p>
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+        {% for choice in form.M4h %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {{ formfield_errors 'M4h' }}
+<br>
+
+
+<!-- M5 -->
+<div class="inner" style="display: column; justify-content: space-between;flex-direction: column;">
+    <p  class="inner" align="left"> <b>10)</b> ¿Cómo es su forma de pensar, qué debería hacer el gobierno con los inmigrantes que ingresan de forma no autorizada a Colombia (Marque solo una opción).</p>
+    <div class="inner" style="display: column; justify-content: between; align-items: center;">
+        {% for choice in form.M5 %}
+        <div style="display: flex; flex-direction: row; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}" style="margin-right: 5px;">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    {{ formfield_errors 'M5' }}
+<br>
+
+
+<div class="row">
+    <div class="col">
+        <div class="text-end">
+            <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Continuar</button>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

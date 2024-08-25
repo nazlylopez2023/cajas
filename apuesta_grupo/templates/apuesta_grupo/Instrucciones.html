@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+<div class="div_text">
+    <span style="color:green;">Segunda etapa</span>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<p align="justify">Ahora <span style="color:green;"><b>debe elegir el candidato de cada una de las ocho (8) duplas que crea fue el más seleccionado por los participantes de esta sala en la etapa anterior</b></span>. Así como usted, ellos tomaron el rol de reclutador y evaluaron las mismas hojas de vida, apostando por el candidato que consideraron estuvo mejor posicionado en el ranking de desempeño en la tarea de codificación. <span style="color:green;"><b>Tenga presente en este ejercicio que usted debe predecir el candidato más elegido por los participantes de esta sala (excluyendo su elección), no al que le apostaron mayor cantidad de tokens.</b></span> </p>
+<p align="justify">Ahora al inicio de cada dupla usted contará con <span style="color:green;"><b>cincuenta (50) tokens</b></span> para realizar su apuesta. Puede disponer la cantidad de tokens que desee entre cero (0) y cincuenta (50). No podrá apostar cantidades negativas o superiores a los tokens disponibles.</p>
+<p align="justify">Imaginemos que usted apuesta <span style="color:green;"><b>1</b></span> token a un candidato de la dupla. Aquí pueden pasar cuatro cosas:</p>
+<p align="justify"><li> Si usted apuesta por el candidato <span style="color:green;"><b>más escogido de la sala</b></span>, ganará los tokens apostados. Por tanto, su ganancia será <span style="color:green;"><b>1</b></span> token.</li></p>
+<p align="justify"><li> Si usted apuesta por el candidato que fue el <span style="color:green;"><b>menos escogido</b></span>, entonces usted perderá los tokens apostados. Por tanto, su ganancia será <span style="color:green;"><b>-1</b></span> token.</li></p>
+<p align="justify"><li> Si apuesta en una dupla que tuvo <span style="color:green;"><b>empate</b></span>, se le contabilizará ese token apostado a sus ganancias.</li></p>
+<p align="justify"><li> Si usted no realiza ninguna apuesta, es decir, si apuesta cero a alguno de los candidatos, su ganancia también será <span style="color:green;"><b>cero.</b></span></li></p>
+<p align="justify">De las ocho (8) elecciones que realizará, solo cuatro (4) de ellas serán elegidas para calcular sus pérdidas y ganancias de esta actividad. Al final de esta etapa, cuando el computador escoja al azar esas cuatro (4) duplas que serán pagadas, se sumarán las ganancias y pérdidas. <span style="color:green;"><b>Tome en cuenta que las ganancias y pérdidas de esta etapa se acumulan con lo obtenido en la etapa anterior, incluyendo la suma fija de 250 tokens de la tarea de codificación</b> </span>. Luego de ello puede encontrarse en alguna de las siguientes situaciones:</p>
+<p align="justify"><li>Si acumula saldo positivo en esta etapa, puede avanzar en la actividad.</li></p>
+<p align="justify"><li>Si el acumulado resulta en un saldo negativo, se descontará de las ganancias obtenidas hasta este momento, incluyendo la suma fija de los 250 tokens.</li></p>
+<p align="justify"><li>Ahora, si luego del descuento el saldo se mantiene positivo, podrá avanzar a la siguiente etapa.</li></p>
+<p align="justify"><li>No obstante, si el saldo resultante es negativo, usted no podrá continuar con el resto del ejercicio. Es decir, perderá la oportunidad de ganar más dinero en la siguiente etapa, deberá retirarse del laboratorio y solo recibirá el subsidio de transporte en efectivo.</li></p>
+<p align="justify">Si tiene dudas, levante la mano para que alguien del equipo se acerque a su escritorio y la resuelva antes de comenzar. Evite siempre hacer preguntas en voz alta.</p>
+<p align="justify">Ahora, dé click en "Siguiente" para iniciar con sus elecciones.</p>
+<div class="div_btnNext">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+{% endblock %}

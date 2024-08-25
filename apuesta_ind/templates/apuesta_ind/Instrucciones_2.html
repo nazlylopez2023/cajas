@@ -1,0 +1,29 @@
+{{ block title }}
+<div style="text-align: center;">
+    <span style="color:blue;">Procesamiento de las apuestas </span>
+</div>
+{{ endblock }}
+{{ block content }}
+
+<p align="justify"> Imaginemos que <span style="color:blue;"><b>de los 100 tokens que tiene a disposición para evaluar una dupla, usted apuesta 1 token a un candidato </b></span> . Aquí pueden pasar tres cosas:</p>
+<p align="justify"> <li> Si usted apuesta por el candidato que tuvo <span style="color:blue;"><b>el mejor desempeño de la dupla</b></span>, ganará los tokens apostados. Por tanto, su ganancia será <span style="color:blue;"><b>1</b></span> token.</li></p>
+<p align="justify"> <li> Si usted apuesta por el candidato que tuvo <span style="color:blue;"><b>el desempeño más bajo de la dupla</b></span>, entonces usted perderá los tokens apostados. Por tanto, tendrá una pérdida de <span style="color:blue;"><b>-1</b></span> token.</li></p>
+<p align="justify"> <li> Si usted no realiza ninguna apuesta, es decir, apuesta cero a cualquiera de los candidatos, su ganancia también será <span style="color:blue;"><b>cero.</b></span></li></p>
+<p align="justify"> Al final de esta etapa, cuando el dispositivo escoja al azar cuatro (4) duplas que serán pagadas, se sumarán las ganancias y pérdidas que usted haya acumulado por esas decisiones que tomó. Ante esto, usted puede encontrarse en alguna de las siguientes situaciones:
+<p align="justify"> <li>Si el saldo es positivo, se le acumulará ese monto y puede avanzar a la siguiente etapa.</li> </p>
+<p align="justify"> <li>Si el saldo es negativo, se descontará de los 250 tokens obtenidos en la tarea de codificación. </li></p>
+<p align="justify"> <li>Si luego del descuento queda un remanente positivo, puede avanzar a la siguiente etapa.</li></p>
+<p align="justify"> <li>Si luego del descuento sus pérdidas son mayores a esos 250 tokens, usted no podrá continuar con el resto del ejercicio. Es decir, perderá la oportunidad de ganar más dinero en la siguiente etapa y deberá finalizar la actividad.</li> </p>
+<p align="justify">  A continuación se le indicará cómo debe hacer sus elecciones. Dé click en "Siguiente". </p>
+    <em>{{ formfields }}</em>
+
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Siguiente</button>
+
+        </div>
+    </div>
+</div>
+
+{{ endblock }}

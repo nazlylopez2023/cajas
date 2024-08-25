@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+<div class="div_text">
+    Estos son sus resultados de la segunda etapa
+</div>
+{% endblock %}
+
+{% block content %}
+ <div class="div_text">
+De las ocho (8) duplas evaluadas se escogieron las siguientes cuatro (4) para pagarle:
+ </div>
+{% for ronda, valores in winners.items %}
+    {% if ronda in rounds_to_payoff %}
+    <div class="div_pago">
+        <b>Dupla # {{ ronda }}</b>
+        <br>
+        En esta dupla usted escogió el candidato {{ valores.my_choose }} apostando {{  valores.tokens }} tokens.
+        <br>
+
+        {% if valores.winner == 'Empate' %}
+            <b>La sala tuvo un Empate</b>
+        {% else %}
+            El más elegido de la sala fue el candidato {{ valores.winner }}.
+        {% endif %}
+        <br>
+        Por lo tanto usted <b>
+            {% if valores.my_choose == valores.winner %}       <!-- valores es porque el total de items en winners -->
+                ganó
+            {% elif valores.winner == 'Empate' %}
+                ganó los tokens apostados
+            {% else %}
+                perdió
+            {% endif %}
+        </b> y obtuvo <b>
+            {% if valores.winner == 'Empate' %}
+                {{  valores.tokens  }}  <!-- División entera para obtener la mitad -->
+            {% elif valores.my_choose == valores.winner %}
+                {{  valores.tokens }}
+            {% else %}
+                -{{  valores.tokens }}
+            {% endif %}
+        </b> tokens.
+    </div>
+    {% endif %}
+{% endfor %}
+
+<div class="div_text">
+<p> <b> Ha obtenido {{ total_tokens }} tokens en esta etapa</b></p>
+</div>
+
+{% if tokens_acum < 0 %}
+    <p>Tomando en cuenta los tokens que obtuvo en esta etapa y la anterior {{ tokens_total_ind }},  usted ha acumulado ganancias negativas que superan los {{ tokens_encription }} tokens ganados la tarea de codificación. </p>
+      <br>
+        <p>Lamentablemente, no puede continuar jugando.</p>
+        <p> En este momento puede abandonar la sala para que el equipo del laboratorio le haga entrega del subsidio de transporte. </p>
+        <p> Muchas gracias por su participación. </p>
+{% else %}
+    <br>
+    <p>Puede avanzar a la siguiente.</p>
+    <div class="div_btnNext" id="div_btnNext">
+        <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+        <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+    </div>
+{% endif %}
+
+{% endblock %}

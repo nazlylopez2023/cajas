@@ -1,0 +1,86 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+<div class="div_text">
+    Estos son sus resutados de la primera etapa
+</div>
+{% endblock %}
+
+{% block content %}
+ <div class="div_text">
+De las ocho (8) duplas evaluadas se escogieron las siguientes cuatro (4) para pagarle:
+	 </div>
+{% for ronda, valores in winners.items %}
+	{% if ronda in rounds_to_payoff %}
+	<div class="div_pago">
+	<b>Dupla # {{ ronda }}</b>
+	<br>
+	En esta dupla usted escogió el candidato {{ valores.my_choose }} apostando {{  valores.tokens }} tokens.
+	<br>
+	El ganador era el candidato {{ valores.winner }}.
+	<br>
+	Por lo tanto usted <b>
+		{% if valores.my_choose == valores.winner %}       <!-- valores es porque el total de items en winners -->
+			ganó
+		{% else %}
+			perdió
+		{% endif %}
+	</b> y obtuvo <b>
+		{% if valores.my_choose == valores.winner %}
+			{{  valores.tokens }}
+		{% else %}
+			-{{  valores.tokens }}
+		{% endif %}
+	</b> tokens.
+	</div>
+	{% endif %}
+{% endfor %}
+
+<p>Usted obtuvo {{ tokens_firmas }} tokens en esta etapa</p>
+    <div class="div_text">
+	<p><b>¡Ha llegado hasta el final de esta actividad!</b></p>
+	</div>
+<br>
+ <div class="div_pago">
+<p> <b>Este es un resumen de sus ganancias obtenidas en la actividad:</b> </p>
+
+  En la tarea de codificación, usted obtuvo {{tokens_encription}} tokens.
+	      <br>
+  En la primera etapa de la segunda parte, obtuvo {{ tokens_indi }} tokens.
+	       <br>
+  En la segunda etapa de la segunda parte, obtuvo {{ tokens_total_grupo }} tokens.
+	       <br>
+  En la tercera y última etapa de la segunda parte, obtuvo {{tokens_firmas}} tokens.
+	        <br>
+	 <div>	<span style="text-align:center;">
+
+		  {% if tokens_finales <= 0 %}
+		            <br>
+        <p> Sus pérdidas superan los {{ tokens_encription }} tokens que obtuvo en la tarea de codificación, por tanto, sus ganancias fueron nulas.</p>
+		  <p> Antes de terminar, por favor diligencie una encuesta corta a continuación. Dé click en "Siguiente". </p>
+		 <p> ¡Muchas gracias por su participación en este estudio! </p>
+
+		 <div class="div_btnNext">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+
+         {% else %}
+		 <br>
+	 <p> En <b>total</b>, usted obtuvo <b>{{ tokens_finales }} tokens</b> que equivalen a <b> ${{ pago_monetario_final }} pesos </b>
+	 </span>
+		 <p>Antes de terminar, por favor diligencie una encuesta corta a continuación. Dé click en "Siguiente".   </p>
+		 <div class="div_btnNext">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+
+	 </div>
+<br>
+ </div>
+    	{% endif %}
+
+
+{% endblock %}

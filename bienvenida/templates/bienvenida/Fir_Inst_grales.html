@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+</style>
+{% endblock %}
+
+{{ block title }}
+  <div style="text-align: center; color:red">
+    <p>Bienvenido al laboratorio experimental móvil de la Universidad del Rosario</p>
+
+      <p>Instrucciones generales </p>
+</div>
+{{ endblock }}
+{{ block content }}
+<p align="justify">Usted está a punto de participar en una actividad de toma de decisiones, y es crucial que siga las siguientes instrucciones:  </p>
+
+<p align="justify">Este ejercicio es individual, a partir de este momento está prohibido comunicarse con otras personas. Realice su tarea en silencio, todas sus decisiones son personales. Entre más concentrado se encuentre, su desempeño será mejor y podrá aumentar sus ganancias. Si tiene alguna duda durante el ejercicio, levante la mano para que la resuelva con el investigador. Por favor, no realice preguntas en voz alta.</p>
+
+<p align="justify">Esta actividad consta de dos partes, la primera con una duración aproximada de 5 a 10 minutos y la segunda con una duración máxima de 20 a 25 minutos. Antes de cada ejercicio aparecerá una página de instrucciones donde se explica de manera específica la tarea que está por realizar; por favor, léalas detenidamente.</p>
+
+<p align="justify">Durante la actividad, hablaremos de tokens. <b>Cada 10 tokens equivalen a $2.000 pesos colombianos.</b>
+
+<p align="justify"><b>Usted obtendrá 250 tokens ($50.000) por completar la primera parte del ejercicio, que será una tarea de codificación.</b> La segunda parte se divide en dos etapas. En cada una debe tomar decisiones sobre duplas de hojas de vida de candidatos que se presentan para un puesto de trabajo vacante. Antes de cada uno de estos ejercicios, se explicará claramente en que marco deberá decidir y cómo su decisión tendrá consecuencias sobre sus ganancias derivadas de la  actividad, incluso sobre los 250 tokens que obtuvo en la primera parte del ejercicio.</p>
+
+<p align="justify">Tenga presente que, si usted lo desea, podrá retirarse en cualquier momento. Sin embargo, solo podrá recibir las ganancias acumuladas por el desempeño en las tareas si llega hasta el final de la actividad.  </p>
+
+<p align="justify">Si obtiene ganancias, al final de la actividad  le aparecerá un formulario que debe diligenciar con su nombre completo, documento de identidad, número de cuenta bancaria y datos de contacto. Tome en cuenta que los datos que proporcione deben coincidir con los registrados en su cuenta bancaria, caso contrario, el pago será rechazado. Las ganancias se depositarán en su cuenta en menos de 72 horas hábiles.</p>
+
+<p align="justify">Antes de iniciar esta actividad, lea detenidamente el consentimiento informado a continuación y decida si acepta continuar. Si no acepta, avise al investigador que le acompaña para finalizar la visita. </p>
+
+<!-- <p>Etiqueta de participante {{lab_id}}</p> -->
+
+<p align="justify">Ahora dé click en el botón "Siguiente" para leer el consentimiento informado.</p>
+
+<em>{{ formfields }}</em>
+
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+
+                        <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;" >Siguiente</button>
+        </div>
+    </div>
+</div>
+
+{{ endblock }}

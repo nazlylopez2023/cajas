@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+<div style="text-align: center;">
+    Estos son sus resultados de la primera etapa
+</div>
+{% endblock %}
+
+{% block content %}
+ <div style="text-align: center;">
+De las ocho (8) duplas evaluadas se escogieron las siguientes cuatro (4) para pagarle:
+	 </div>
+{% for ronda, valores in winners.items %}
+	{% if ronda in rounds_to_payoff %}
+	<div class="div_pago">
+	<b>Dupla # {{ ronda }}</b>
+	<br>
+	En esta dupla usted escogió el candidato {{ valores.my_choose }} apostando {{  valores.tokens }} tokens.
+	<br>
+	El ganador era el candidato {{ valores.winner }}.
+	<br>
+	Por lo tanto usted <b>
+		{% if valores.my_choose == valores.winner %}       <!-- valores es porque el total de items en winners -->
+			ganó
+		{% else %}
+			perdió
+		{% endif %}
+	</b> y obtuvo <b>
+		{% if valores.my_choose == valores.winner %}
+			{{  valores.tokens }}
+		{% else %}
+			-{{  valores.tokens }}
+		{% endif %}
+	</b> tokens.
+	</div>
+	{% endif %}
+{% endfor %}
+
+<div class="div_text">
+<p> <b> Ha obtenido {{ tokens_individual }} tokens en esta etapa</b></p>
+</div>
+    {% if tokens_acum < 0 %}
+
+        <p> Usted ha acumulado ganancias negativas que superan los {{ tokens_encription }} tokens que obtuvo en la tarea de codificación. No puede continuar jugando.</p>
+		<p> En este momento la actividad ha finalizado. </p>
+		<p> ¡Muchas gracias por su participación en este estudio! </p>
+
+         {% else %}
+<br>
+        <p>Puede avanzar a la siguiente.</p>
+<div class="div_btnNext" id="div_btnNext">
+	<input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+	<button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+</div>
+    {% endif %}
+
+{% endblock %}

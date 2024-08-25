@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+</style>
+{% endblock %}
+
+{{ block title }}
+      <div style="text-align: center; color:black">
+        <p>Primera parte - Codificación de palabras</p>
+    <p>Instrucciones de la tarea</p>
+
+</div>
+
+{{ endblock }}
+{{ block content }}
+    <p>¡Bienvenido a la primera parte de esta actividad! </p>
+
+<p align="justify">Esta tarea dura entre 5 y 10 minutos incluyendo la lectura de estas instrucciones y un pequeño entrenamiento. Su trabajo es codificar combinaciones de letras en números en tres minutos. En la pantalla verá una “palabra” compuesta por tres letras, usted deberá escribir el número de tres cifras que le corresponde a cada letra de esa palabra. En la parte inferior usted encontrará una “tabla de correspondencias” en la que puede ver el código de tres números que le corresponde a cada letra de la palabra. </p>
+<p align="justify">Cuando termine de reemplazar el número completo puede dar click en “Aceptar” y continuar con la codificación de la siguiente palabra. El objetivo es que logre codificar la mayor cantidad de palabras  durante los tres minutos. Observe el siguiente ejemplo: </p>
+
+<div class="image-container">
+<img src="{% static 'Ejemplo_encrip.png' %}" width="90%" height="50%">
+</div>
+
+<br>
+<p align="justify">Acá la palabra es formada por las letras "K", "E", "X". Para empezar a codificar la palabra, debe buscar en la tabla el número de tres cifras que le corresponde a cada letra. Note que en este ejemplo a la letra "K" le corresponde el número "254", como lo señala el círculo negro en la tabla de correspondencias. Ese es el número que se digita en la casilla que la letra "K" tiene debajo. Luego, siga con las demás letras y seleccione "Aceptar". Para pasar de una casilla a otra, seleccione la casilla tocándola en la pantalla con sus dedos. Cuando aparezca una nueva palabra, la tabla de correspondencias cambiará, es decir, las letras tomarán valores diferentes cada que termine de codificar una palabra y pase a la siguiente.</p>
+<p align="justify">Si se equivoca en alguna codificación, el dispositivo no lo dejará avanzar hasta que corrija. Cuando se haya equivocado, un aviso rojo aparecerá indicando el número de errores. Cuando los corrija puede continuar. Realizará el mismo procedimiento varias veces hasta finalizar los tres minutos.</p>
+<p align="justify">Al terminar la tarea, la pantalla le indicará el número de palabras codificadas de manera correcta. <b>Por completar esta actividad obtendrá una suma de 250 tokens que podrá ponerse en juego en la segunda parte de la actividad.</b> Tome en cuenta que <b>si no logra codificar correctamente al menos una palabra, no obtendrá los 250 tokens. Es decir, obtendrá 0 tokens.</b> </p>
+<p align="justify">Ahora seleccione "Continuar" para iniciar una pequeño entrenamiento antes del ejercicio. </p>
+
+    <em>{{ formfields }}</em>
+
+
+   <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Continuar</button>
+
+{{ endblock }}

@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    Estos son sus resultados de la tercera etapa
+{% endblock %}
+
+{% block content %}
+
+	{% if pago_monetario >= 100000 %}
+<p>Su pago es mayor a $100.000. Por asuntos relacionados con la administración financiera del estudio, su pago será dividido en dos partes iguales. La primera mitad será pagada en efectivo junto con el subsidio de transporte y la segunda mitad será depositada a su cuenta bancaria vía transferencia.</p>
+<p>Por favor ingrese la información de su etiqueta de participante y de su cuenta bancaria. Recuerde que los datos ingresados de su cuenta deben coincidir con los registrados en la entidad bancaria </p>
+   <br>
+<p>Etiqueta de participante: <input type="text" name="lab_id" required></p>
+   <br>
+<div class="inner" style="display: flex; ">
+    <p class="inner" align="left">
+     Tipo de cuenta: </p>
+   <div style="display: flex; align-items: center;">
+        {% for choice in form.tipo_cuenta %}
+        <div style="display: flex; flex-direction: row; align-items: center; margin: 10px;">
+            <label for="{{ choice.id }}" style="margin-right: 5px;">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+       {{ formfield_errors 'tipo_cuenta' }}
+
+<p>Número de cuenta:</p><input type="text" name="nro_cuenta" required>
+{{ formfield_errors 'nro_cuenta' }}
+
+	{% else %}
+
+<p>Por favor ingrese la información de su etiqueta de participante y de su cuenta bancaria. Recuerde que los datos ingresados de su cuenta deben coincidir con los registrados en la entidad bancaria </p>
+
+<p>Etiqueta de participante: <input type="text" name="lab_id" required></p>
+
+<br>
+
+<div class="inner" style="display: flex; flex-direction: row; align-items: center;">
+    <p class="inner" align="left" style="margin-right: 10px;">
+        Tipo de cuenta: </p>
+   <div style="display: flex; align-items: center;">
+        {% for choice in form.tipo_cuenta %}
+        <div style="display: flex; flex-direction: column; align-items: center; margin: 5px;">
+            <label for="{{ choice.id }}">{{ choice.label }}</label>
+            {{ choice }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{{ formfield_errors 'nro_cuenta' }}
+
+	{% endif %}
+
+	<br>
+
+<p>Número de cuenta: <input type="number" name="nro_cuenta" required></p>
+{{ formfield_errors 'nro_cuenta' }}
+
+    {{ form.errors }}
+
+<div class="div_btnNext">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+{% endblock %}

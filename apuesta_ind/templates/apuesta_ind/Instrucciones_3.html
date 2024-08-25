@@ -1,0 +1,29 @@
+{{ block title }}
+<div style="text-align: center;">
+
+    <span style="color:blue;">Selección de sus opciones</span>
+</div>
+{{ endblock }}
+{{ block content }}
+
+<p align="justify"> Para seleccionar a su candidato, simplemente haga click o toque la pantalla sobre la hoja de vida de su preferencia. Luego, utilice el teclado para ingresar la cantidad de tokens que desea apostar en el cuadro de texto ubicado debajo de las hojas de vida. <span style="color:blue;"><b>Recuerde que el monto de la apuesta debe ser cualquier cantidad que decida entre cero (0) y cien (100) tokens</b></span>. No podrá apostar valores negativos o superiores a los tokens disponibles. </p>
+<p align="justify"> Al hacer su elección e ingresar la cantidad de tokens en el cuadro, aparecerá un botón azul con la palabra “Siguiente” que debe oprimir para guardar la apuesta y pasar a evaluar las hojas de vida de la siguiente dupla. El botón no aparecerá si no selecciona a uno de los candidatos o no escribe una cantidad de tokens para apostar. Tenga en cuenta que no podrá elegir a ambos candidatos en una misma dupla. </p>
+<p align="justify"> Las duplas están numeradas y aparecerán en su pantalla de manera aleatoria. Es decir, puede suceder que la primera dupla que usted evalúe no sea la dupla número 1. Notará que los últimos tres dígitos de los números de identificación de los candidatos están cubiertos, esto para cumplir con la política de confidencialidad de datos personales en este ejercicio.</p>
+
+<p align="justify">A continuación, pasará a una página en donde se le dará un <span style="color:blue;"><b>ejemplo de lo que observará durante el ejercicio</b></span>. Usted realizará una pequeña prueba para confirmar que ha entendido la dinámica de las apuestas.</p>
+
+<p align="justify">Si tiene dudas, por favor levante su mano para que el investigador se acerque y las resuelva antes de comenzar. Evite siempre hacer preguntas en voz alta.</p>
+
+<p align="justify">Ahora, dé click en "Siguiente" para dirigirse al entrenamiento.</p>
+    <em>{{ formfields }}</em>
+
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <button style="margin-top: 10px; display: block; margin-left: auto; margin-right: auto; background-color: #0069d9; border-color: #007bff; color: white; border-radius: 10px; border: none; padding: 5px 10px;">Siguiente</button>
+
+        </div>
+    </div>
+</div>
+
+{{ endblock }}

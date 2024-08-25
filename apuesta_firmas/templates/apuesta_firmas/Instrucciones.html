@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+<div style="text-align: center;">
+    <span style="color:purple;">Tercera etapa</span>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<p align="justify">Esta es la última etapa de la segunda parte de la actividad. En esta ocasión, hemos introducido un elemento adicional: en sesiones anteriores, la tarea de codificación y la primera etapa de elección de candidatos fue aplicada con personal de Recursos Humanos (RRHH) de pequeñas y medianas empresas. Así como usted, ellos tomaron el rol de reclutador de hojas de vida y apostaron al candidato que consideraron estuvo mejor posicionado en el ranking de desempeño, y por tanto, del que esperaban un mejor desempeño laboral.</p>
+<p align="justify">Ahora su tarea será <span style="color:purple;"><b>predecir cuál fue la hoja de vida más seleccionada por este personal </b></span> en cada dupla de candidatos. Note que su selección se orientará por <span style="color:purple;"><b>los candidatos más elegidos por las empresas, no por aquellos a quienes se les apostó mayor cantidad de tokens</b></span>. Usted verá las mismas (8) duplas de candidatos que esos participantes evaluaron. </b> Al inicio de cada una de ellas usted contará con <span style="color:purple;"><b>cincuenta (50) tokens</b></span> para realizar su apuesta. Puede disponer la cantidad de tokens que desee entre cero (0) y cincuenta (50). No podrá apostar cantidades negativas o superiores a los tokens disponibles.</p>
+<p align="justify">Imaginemos en esta situación que usted apuesta <span style="color:purple;"><b>1</b></span> token a un candidato de la dupla. Aquí pueden pasar cuatro cosas:</p>
+<p align="justify"><li> Si usted apuesta por el candidato <span style="color:purple;"><b>más escogido por el personal de RRHH</b></span>, ganará los tokens apostados. Su ganancia será <span style="color:purple;"><b>1</b></span> token.</li></p>
+<p align="justify"><li> Si usted apuesta por el candidato <span style="color:purple;"><b>menos escogido por el personal de RRHH</b></span>, perderá los tokens apostados. Su ganancia será <span style="color:purple;"><b>–1</b></span> token.</li></p>
+<p align="justify"><li>Si apuesta en una dupla que tuvo <span style="color:purple;"><b>empate</b></span> el token que apostó le será contabilizado en sus ganancias. </li>  </p>
+<p align="justify"><li> Si usted no realiza ninguna apuesta, es decir, si apuesta cero a cualquiera de los candidatos, su ganancia también será <span style="color:purple;"><b>cero.</b></span></li></p>
+<p align="justify">Al final de esta etapa, cuando el computador escoja al azar cuatro (4) duplas que serán pagadas, se sumarán las ganancias y pérdidas. Tenga presente que las ganancias y pérdidas de esta etapa se han venido acumulando con lo obtenido en las dos etapas anteriores, incluyendo la suma fija de 250 tokens de la tarea de codificación. Después de esto, usted se puede encontrar en cualquiera de estas situaciones:</p>
+<p align="justify"><li>Si el saldo acumulado al final de esta etapa es positivo, le será pagado.</li></p>
+<p align="justify"><li>Si el saldo acumulado hasta esta etapa es negativo, se descontará de la suma fija de 250 tokens y se le pagará el remanente positivo.</li> </p>
+<p align="justify"><li>Si después del descuento, usted queda con saldo negativo, solo recibirá el subsidio de transporte en la recepción del laboratorio.</li></p>
+<p align="justify">Si tiene dudas, levante la mano para que alguien del equipo se acerque a su escritorio y la resuelva antes de comenzar. Evite siempre hacer preguntas en voz alta.</p>
+<p align="justify">Ahora dé click en "Siguiente" para iniciar con sus elecciones.</p>
+<div class="div_btnNext">
+    <input type="button" id="btnNext" class="btnNext" value="Siguiente" onclick="nextView()">
+    <button class="otree-btn-next btn btn-primary" style="display: none;" id="id_next" disabled>Siguiente</button>
+
+</div>
+{% endblock %}
